@@ -10,6 +10,12 @@ Simple ArcSight logger with full support [Common Event Format.](https://www.sece
 * Changing field's values on fly.
 * Custom Extensions fields support.
 
+## Install
+
+Install from pypi:  
+```bash
+pip install cef_logger
+```
 
 ## Usage
 
