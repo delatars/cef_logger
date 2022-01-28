@@ -88,17 +88,17 @@ class ArcSightLogger:
 **Now we can easy to logging our events**
 
 ```python
-from .logger import MyArcSightLogger
+from .logger import ArcSightLogger
 
 
-MyArcSightLogger.login_event()
-# 2021-01-26T11:46:26.620649+00:00|Login|9|Выполнен вход в систему|end=1618908511
-MyArcSightLogger.logout_event()
-# 2021-01-26T11:46:26.620649+00:00|Logout|9|Выполнен выход из системы|end=1618908525
+ArcSightLogger.login_event()
+# 2021-01-26T11:46:26.620649+00:00|Login|9|Signed in system|end=1618908511
+ArcSightLogger.logout_event()
+# 2021-01-26T11:46:26.620649+00:00|Logout|9|Signed out system|end=1618908525
 
 # Change fields on fly
-MyArcSightLogger.login_event(severity='Medium', msg='Повторный вход в систему')
-# 2021-01-26T11:46:26.620649+00:00|Login|Medium|Повторный вход в систему|end=1618908543
+MyArcSightLogger.login_event(severity='Medium', msg='Signed in system again')
+# 2021-01-26T11:46:26.620649+00:00|Login|Medium|Signed in system again|end=1618908543
 
 ```
 
@@ -110,12 +110,12 @@ MyArcSightLogger.login_event(severity='Medium', msg='Повторный вход
 ```python
 import logging.handlers
 
-from cef_logger import ArcEvent
+from cef_logger import Event
 
 
-class BaseEvent(ArcEvent):
+class BaseEvent(Event):
     EMITTERS = (
-        *ArcEvent.EMITTERS,
+        *Event.EMITTERS,
         logging.handlers.SysLogHandler(address='/dev/log'),
     )
     Version = 1
@@ -131,10 +131,10 @@ class BaseEvent(ArcEvent):
 #### If you want syslog header but use console handler
 
 ```python
-from cef_logger import ArcEvent
+from cef_logger import Event
 
 
-class BaseEvent(ArcEvent):
+class BaseEvent(Event):
     SYSLOG_HEADER = True
     
     Version = 1
