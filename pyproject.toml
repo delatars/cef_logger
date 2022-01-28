@@ -1,28 +1,45 @@
-[tool.poetry]
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
 name = "cef_logger"
-version = "1.0.0"
-description = "Simple Common Event Format logger"
+authors = [{name = "Alexander Morokov", email = "morocov.ap.muz@gmail.com"}]
 readme = "README.md"
-authors = ["Alexander Morokov <morocov.ap.muz@gmail.com>"]
-repository = "https://github.com/delatars/cef_logger"
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+dynamic = ["version", "description"]
+dependencies = [
+    "pydantic >=1.6.1, <2.0.0",
+]
+requires-python = ">=3.6.0"
 
-[tool.poetry.dependencies]
-python = "^3.6"
-pydantic = "^1.6.1"
+[project.urls]
+Home = "https://github.com/delatars/cef_logger"
 
-[tool.poetry.dev-dependencies]
-flake8 = "^3.7.9"
-flake8-bugbear = "^20.1.4"
-flake8-builtins = "^1.5.2"
-flake8-debugger = "^3.2.1"
-flake8-comprehensions = "^3.2.2"
-flake8-isort = "^3.0.0"
-flake8-logging-format = "^0.6.0"
-flake8-mutable = "^1.2.0"
-flake8-pep3101 = "^1.3.0"
-flake8-print = "^3.1.4"
-flake8-string-format = "^0.3.0"
-flake8-quotes = "^3.0.0"
-isort = "^4.3.21"
-mypy = "^0.910"
-pytest = "^5.4.1"
+[project.optional-dependencies]
+test = [
+    "pytest >=5.4.3, <6.0.0",
+    "flake8 >=3.9.2, <4.0.0",
+    "flake8-bugbear >=0.11.1, <0.12.0",
+    "flake8-builtins >=1.5.3, <2.0.0",
+    "flake8-comprehensions >=3.7.0, <4.0.0",
+    "flake8-debugger >=3.2.1, <4.0.0",
+    "flake8-isort >=3.0.1, <4.0.0",
+    "flake8-logging-format >=0.6.0, <0.7.0",
+    "flake8-mutable >=1.2.0, <2.0.0",
+    "flake8-pep3101 >=1.3.0, <2.0.0",
+    "flake8-print >=3.1.4, <4.0.0",
+    "flake8-quotes >=3.3.1, <4.0.0",
+    "flake8-string-format >=0.3.0, <0.4.0",
+    "mypy >=0.910, <1.0",
+    "isort =>4.3.21, <5.0.0",
+]
